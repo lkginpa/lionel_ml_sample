@@ -1,44 +1,160 @@
 {
-  "id": 0,
-  "guid": "b808e01e-270c-4249-89bf-2493a65881ec",
-  "isActive": false,
-  "balance": "$2,495.53",
-  "picture": "http://placehold.it/32x32",
-  "age": 24,
-  "eyeColor": "green",
-  "name": "Melanie Patton",
-  "gender": "female",
-  "company": "QUARMONY",
-  "email": "melaniepatton@quarmony.com",
-  "phone": "+1 (995) 430-2908",
-  "address": "795 Maujer Street, Machias, Nebraska, 257",
-  "about": "Laboris excepteur qui sit reprehenderit Lorem. Eiusmod cupidatat dolore nulla cupidatat laborum id esse commodo laborum esse Lorem ex laborum. Labore ullamco ullamco in esse.\r\n",
-  "registered": "2014-01-16T02:17:30 +05:00",
-  "latitude": -28.696297,
-  "longitude": -147.037854,
-  "tags": [
-    "aliqua",
-    "nisi",
-    "est",
-    "minim",
-    "fugiat",
-    "ullamco",
-    "laboris"
-  ],
-  "friends": [
-    {
-      "id": 0,
-      "name": "Campos Russo"
-    },
-    {
-      "id": 1,
-      "name": "Crawford Mueller"
-    },
-    {
-      "id": 2,
-      "name": "Bonnie Elliott"
-    }
-  ],
-  "greeting": "Hello, Melanie Patton! You have 8 unread messages.",
-  "favoriteFruit": "apple"
+  "sponsor":
+  {
+    "id": 0,
+    "name": "Gamma Gen",
+    "address1": "101 S. First",
+    "address2": "Suite 100",
+    "city": "Philadelphia",
+    "state": "PA",
+    "country": "USA",
+    "postalCode": "19020",
+    "active": true,
+    "clientType": "sponsor",
+    "studies":
+    [
+      {
+        "studyName": "",
+        "protocol": "GammaGen211",
+        "active": true,
+        "phase": 2,
+        "therapeuticArea": "endocrinology",
+        "activationDate": "20140101",
+        "completionDate": "",
+        "cro": "",
+        "clinicalTrialsGovID": "123456",
+        "contacts":
+        {
+            "studyCoordinator":
+            {
+                "name": "John Smith",
+                "email": "jsmith@example.com"
+            },
+            "itCoordinator":
+            {
+                "name": "Jim Jones",
+                "email": "jjones@example.com"
+            },
+            "interalStudyManager":
+            {
+                "name": "Jill Smith",
+                "email": "jillsmith@example.com"
+            }
+        },
+        "dataSources":
+        [
+          "manual",
+          "EDC"
+        ],
+        "researchSites":
+        [
+          {
+            "siteID": "0001",
+            "name": "Children's Hospital of Philadelphia",
+            "address1": "101 S. First St",
+            "address2": "",
+            "city": "Philadelphia",
+            "state": "PA",
+            "postalCode": "19047",
+            "principleInvestigator":
+            {
+              "name": "John Smith",
+              "npiNumber": "US12345678"
+            }
+          }
+        ],
+        "paymentSchedules":
+        [
+          {
+            "fromDate": "20150101",
+            "thruDate": "20151231",
+            "paymentEvents":
+            [
+              {
+                "milestone": "Screening Visit",
+                "amount": "100.00"
+              },
+              {
+                "milestone": "Randomization",
+                "amount": "60.00"
+              },
+              {
+                "milestone": "Week0",
+                "amount": "50.00"
+              },
+              {
+                "milestone": "Week4",
+                "amount": "60.00"
+              },
+              {
+                "milestone": "Week8",
+                "amount": "60.00"
+              },
+              {
+                "milestone": "Week12",
+                "amount": "60.00"
+              },
+              {
+                "milestone": "Week16",
+                "amount": "60.00"
+              },
+              {
+                "milestone": "Week20",
+                "amount": "60.00"
+              },
+              {
+                "milestone": "Week24",
+                "amount": "60.00"
+              },
+              {
+                "milestone": "Week28",
+                "amount": "60.00"
+              },
+              {
+                "milestone": "Week32",
+                "amount": "60.00"
+              },
+              {
+                "milestone": "Week36",
+                "amount": "60.00"
+              },
+              {
+                "milestone": "Week40",
+                "amount": "60.00"
+              },
+              {
+                "milestone": "Week44",
+                "amount": "60.00"
+              },
+              {
+                "milestone": "Week48",
+                "amount": "60.00"
+              },
+              {
+                "milestone": "Week52",
+                "amount": "60.00"
+              },
+              {
+                "milestone": "Monitor Visit",
+                "amount": "45.00"
+              },
+              {
+                "milestone": "Termination Visit",
+                "amount": "100.00"
+              }
+            ]
+          }],
+        "subjects":
+        [
+          {
+            "subjectID": "0001",
+            "subjectName": "William Smith"
+          },
+          {
+            "subjectID": "0002",
+            "subjectName": "Frank Jones"
+          }
+        ]
+      }]
+  }
 }
