@@ -87,7 +87,10 @@ angular.module('sample.create')
 	      addr2: '',
 	      city: '',
 	      state: '',
-	      postalCode: ''
+	      postalCode: '',
+	      investigatorFirstName: '',
+	      investigatorLastName: '',
+	      investigatorNPI: ''
 	  },
         user: user
       };
@@ -119,10 +122,6 @@ angular.module('sample.create')
             win.location.href = '/detail?uri=' + response.headers('location').replace(/(.*\?uri=)/, '');
           });
         },
-        addTag: function() {
-          model.person.tags.push(model.newTag);
-          model.newTag = '';
-	},
         addClinic: function() {
           model.study.clinics.push(model.newClinic);
           model.newClinic = '';
