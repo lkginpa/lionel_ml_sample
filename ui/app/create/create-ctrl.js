@@ -4,28 +4,12 @@
   angular.module('sample.create')
     .controller('CreateCtrl', ['$scope', 'MLRest', '$window', 'User', function ($scope, mlRest, win, user) {
       var model = {
-        person: {
-          isActive: true,
-          balance: 0,
-          picture: 'http://placehold.it/32x32',
-          age: 0,
-          eyeColor: '',
-          name: '',
-          gender: '',
-          company: '',
-          email: '',
-          phone: '',
-          address: '',
-          about: '',
-          registered: '',
-          latitude: 0,
-          longitude: 0,
-          tags: [],
-          friends: [],
-          greeting: '',
-          favoriteFruit: ''
-        },
-        newTag: '',
+	  study: {
+	      name: '',
+	      protocol: '',
+	      clinics: []
+	  },
+	  newClinic: {name: '', addr1: ''},
         user: user
       };
 
@@ -45,7 +29,7 @@
           toolbar_full: ''
         },
         submit: function() {
-          mlRest.createDocument($scope.model.person, {
+          mlRest.createDocument($scope.model.study, {
             format: 'json',
             directory: '/content/',
             extension: '.json'
@@ -59,7 +43,12 @@
         addTag: function() {
           model.person.tags.push(model.newTag);
           model.newTag = '';
+	},
+        addClinic: function() {
+          model.study.clinics.push(model.newClinic);
+          model.newClinic = '';
         }
+
       });
     }]);
 }());
