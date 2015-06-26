@@ -1,4 +1,24 @@
 <div class="create" ng-show="model.user.authenticated">
+
+
+  <div class="row">
+    <div class="col-md-1">.col-md-1</div>
+    <div class="col-md-1">.col-md-1</div>
+    <div class="col-md-1">.col-md-1</div>
+    <div class="col-md-1">.col-md-1</div>
+    <div class="col-md-1">.col-md-1</div>
+    <div class="col-md-1">.col-md-1</div>
+    <div class="col-md-1">.col-md-1</div>
+    <div class="col-md-1">.col-md-1</div>
+    <div class="col-md-1">.col-md-1</div>
+    <div class="col-md-1">.col-md-1</div>
+    <div class="col-md-1">.col-md-1</div>
+    <div class="col-md-1">.col-md-1</div>
+  </div>
+
+
+
+
   <div class="row">
     <div class="col-sm-2"></div>
     <h2 class="col-sm-10">Add Study</h2>
@@ -19,7 +39,10 @@
       </div>
     </div>
 
-
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <h4 class="col-sm-10">Clinics</h4>
+    </div>
 
     <div class="form-group">
       <div class="col-sm-10">
@@ -30,21 +53,49 @@
       </div>
     </div>
 
+
     <div class="form-group">
-      <label class="col-sm-2 control-label">Clinics</label>
-      <div class="col-sm-10">
+      <div class="row">
+	<span class="col-sm-2"></span>
 	<label class="col-sm-2 control-label">Name</label>
-        <input type="text" ng-model="model.newClinic.name"/>
+        <input class="col-sm-7" type="text" ng-model="model.newClinic.name"/>
       </div>
-      <div class="col-sm-10">
+
+      <div class="row">
+	<span class="col-sm-2"></span>
 	<label class="col-sm-2 control-label">Address1</label>
-        <input type="text" ng-model="model.newClinic.addr1"/>
+        <input class="col-sm-7" type="text" ng-model="model.newClinic.addr1"/>
       </div>
-      <div class="col-sm-10">
-        <button class="add-feature" ng-click="addClinic()">Add</button>
+
+      <div class="row">
+	<span class="col-sm-2"></span>
+	<label class="col-sm-2 control-label">Address2</label>
+        <input class="col-sm-7" type="text" ng-model="model.newClinic.addr2"/>
+      </div>
+
+      <div class="row">
+	<span class="col-sm-2"></span>
+	<label class="col-sm-2 control-label">City</label>
+        <input class="col-sm-7" type="text" ng-model="model.newClinic.city"/>
+      </div>
+
+      <div class="row">
+	<span class="col-sm-2"></span>
+	<label class="col-sm-2 control-label">State</label>
+        <input class="col-sm-7" type="text" ng-model="model.newClinic.state"/>
+      </div>
+
+      <div class="row">
+	<span class="col-sm-2"></span>
+	<label class="col-sm-2 control-label">Postal Code</label>
+        <input class="col-sm-7" type="text" ng-model="model.newClinic.postalCode"/>
+      </div>
+
+      <div class="row">
+	<span class="col-sm-4"></span>
+        <button class="col-sm-1 add-feature" ng-click="addClinic()">Add</button>
       </div>
     </div>
-
 
     <div class="row">
       <a class="col-sm-offset-9 col-sm-1" href="/">Cancel</a>

@@ -9,7 +9,14 @@
 	      protocol: '',
 	      clinics: []
 	  },
-	  newClinic: {name: '', addr1: ''},
+	  newClinic: {
+	      name: '', 
+	      addr1: '',
+	      addr2: '',
+	      city: '',
+	      state: '',
+	      postalCode: ''
+	  },
         user: user
       };
 
