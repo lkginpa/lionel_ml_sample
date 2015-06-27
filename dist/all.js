@@ -75,11 +75,16 @@ angular.module('sample.create')
 
   angular.module('sample.create')
     .controller('CreateCtrl', ['$scope', 'MLRest', '$window', 'User', function ($scope, mlRest, win, user) {
+      var paymentScheduleFile = '<empty>';
+
+
       var model = {
 	  study: {
 	      name: '',
 	      protocol: '',
-	      clinics: []
+	      sponsor: {},
+	      clinics: [],
+	      paymentSchedules: []
 	  },
 	  newClinic: {
 	      name: '', 
@@ -97,6 +102,7 @@ angular.module('sample.create')
 
       angular.extend($scope, {
         model: model,
+	paymentScheduleFile: paymentScheduleFile,
         editorOptions: {
           height: '100px',
           toolbarGroups: [
@@ -125,7 +131,18 @@ angular.module('sample.create')
         addClinic: function() {
           model.study.clinics.push(model.newClinic);
           model.newClinic = '';
-        }
+        },
+	upload: function() {
+
+	    var fileVariable = "paymentScheduleFile";
+	    var filename = xdmp.getRequestFieldFilename(fileVariable);
+	    var disposition = fn.concat('attachment; filename=", filename, "');
+	    var x = xdmp.addResponseHeader("Content-Disposition", disposition);
+	    var x= xdmp.setResponseContentType( xdmp.getRequestFieldContentType(fileVariable);
+	    xdmp.getRequestField(fileVariable);
+
+	    win.console.log($scope.form-upload.paymentScheduleFile);
+	}
 
       });
     }]);
