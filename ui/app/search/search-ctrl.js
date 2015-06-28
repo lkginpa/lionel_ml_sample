@@ -2,16 +2,27 @@
   'use strict';
 
   angular.module('sample.search')
-    .controller('SearchCtrl', ['$scope', 'MLRest', 'User', '$location', function ($scope, mlRest, user, $location) {
+    .controller('SearchCtrl', ['$scope', 'MLRest', 'User', '$location', '$window', function ($scope, mlRest, user, $location, $win) {
       var model = {
         selected: [],
         text: '',
         user: user
       };
 
+      var clinicNameFacet = {
+          constraints: {
+              name: {
+                  queryStringName: 'name',
+                  constraintName: 'name',
+                  type: 'text'
+              }
+          }
+      };
+
       var searchContext = mlRest.createSearchContext();
 
       function updateSearchResults(data) {
+	$win.console.log(data);
         model.search = data;
       }
 
@@ -25,6 +36,10 @@
         model: model,
         selectFacet: function(facet, value) {
           var existing = model.selected.filter( function( selectedFacet ) {
+	    $win.console.log(selectedFacet.facet);
+	    $win.console.log(facet);
+	    $win.console.log(selectedFacet.value);
+	    $win.console.log(value);
             return selectedFacet.facet === facet && selectedFacet.value === value;
           });
           if ( existing.length === 0 ) {

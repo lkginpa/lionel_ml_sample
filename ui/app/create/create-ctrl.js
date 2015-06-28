@@ -5,12 +5,14 @@
     .controller('CreateCtrl', ['$scope', 'MLRest', '$window', 'User', function ($scope, mlRest, win, user) {
       var model = {
 	  study: {
-	      name: '',
+	      studyName: '',
 	      protocol: '',
-	      clinics: []
+	      clinics: [],
+	      paymentSchedules: []
 	  },
 	  newClinic: {
-	      name: '', 
+	      clinicName: '',
+	      clinicNumber: 0,
 	      addr1: '',
 	      addr2: '',
 	      city: '',
@@ -22,6 +24,8 @@
 	  },
         user: user
       };
+
+      var nextClinicNumber = 1;
 
       angular.extend($scope, {
         model: model,
@@ -51,9 +55,15 @@
           });
         },
         addClinic: function() {
+	  model.newClinic.clinicNumber = nextClinicNumber++;
           model.study.clinics.push(model.newClinic);
           model.newClinic = '';
-        }
+        },
+	removeClinic: function(removeClinic) {
+	    model.study.clinics = model.study.clinics.filter(function(clinic) {
+		return clinic.clinicNumber !== removeClinic.clinicNumber;
+	    });
+	}
 
       });
     }]);

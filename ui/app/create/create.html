@@ -10,7 +10,7 @@
     <div class="form-group">
       <label class="col-sm-2 control-label">Name</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" placeholder="study's name" ng-model="model.study.name">
+        <input type="text" class="form-control" placeholder="study's name" ng-model="model.study.studyName">
       </div>
     </div>
 
@@ -29,8 +29,8 @@
     <div class="form-group">
       <div class="col-sm-10">
         <div class="tag btn btn-info" ng-repeat="clinic in model.study.clinics">
-          <div>{{clinic.name}}</div>
-          <span class="glyphicon glyphicon-remove-circle" ng-click="alert('fill me in');"></span>
+          <div>{{clinic.clinicName}}</div>
+          <span class="glyphicon glyphicon-remove-circle" ng-click="removeClinic(clinic);"></span>
         </div>
       </div>
     </div>
@@ -40,7 +40,7 @@
       <div class="row">
 	<span class="col-sm-2"></span>
 	<label class="col-sm-2 control-label">Name</label>
-        <input class="col-sm-7" type="text" ng-model="model.newClinic.name"/>
+        <input class="col-sm-7" type="text" ng-model="model.newClinic.clinicName"/>
       </div>
 
       <div class="row">

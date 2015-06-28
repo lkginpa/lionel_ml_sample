@@ -6,7 +6,7 @@
     </div>
   </div>
   <div class="facet" ng-repeat="(index, facet) in facets | object2Array">
-    <h3>{{ facet.__key }}</h3>
+    <!-- <h3>{{ facet.__key }}</h3> -->
     <div ng-repeat="value in facet.facetValues">
       <a ng-click="select({facet: facet.__key, value: value.name})">{{value.name}} ({{value.count}})</a>
     </div>
