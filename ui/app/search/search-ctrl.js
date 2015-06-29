@@ -9,6 +9,7 @@
       var model = {
         selected: [],
         text: '',
+	clinicNameFilter: '',
         user: user
       };
 
