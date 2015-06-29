@@ -309,6 +309,10 @@ angular.module('sample.detail', []);
             .search()
             .then(updateSearchResults);
         },
+	addClinicNameFilter: function(facet, value) {
+	    $scope.selectFacet(facet, value);
+	    $scope.model.clinicNameFilter = '';
+	},
         getSuggestions: function(val) {
           return mlRest.callExtension('extsuggest', { 'method' : 'GET', 'params' : { 'rs:pqtxt' : val, 'rs:options' : 'all'} }).then(function(res){
             return res.suggestions;
