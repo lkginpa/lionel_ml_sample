@@ -4,7 +4,7 @@
   angular.module('sample.search')
     .controller('SearchCtrl', ['$scope', 'MLRest', 'User', '$location', '$window', function ($scope, mlRest, user, $location, $win) {
 
-      var clinicNameFacet = {facet: "eyeColor", value: "brown"};
+      var clinicNameFacet = {facet: "clinicName", value: "clinicr"};
 
       var model = {
         selected: [],
@@ -12,22 +12,18 @@
         user: user
       };
 
-      // var options = {
-      // 	  queryOptions: {
-      // 	      "constraint": [
-      // 		  {
-      // 		      "name": "clinic-name",
-      // 		      "value": {
-      // 			  "type": "string",
-      // 			  "json-property": "clinicName"
-      // 		      }
-      // 		  }
-      // 	      ]
-      // 	  }
+      // var options = { 
+      // 	  queryOptions: ['clinic-name-only'],
+      // 	  customConstraintNames: ['clinic-name']
       // };
 
-      //var searchContext = mlRest.createSearchContext(options);
-      var searchContext = mlRest.createSearchContext();
+      var options = { 
+      	  queryOptions: ['all'],
+      };
+
+
+      //var searchContext = mlRest.createSearchContext();
+      var searchContext = mlRest.createSearchContext(options);
 
       function updateSearchResults(data) {
 	$win.console.log(data);
