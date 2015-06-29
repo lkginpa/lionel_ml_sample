@@ -80,8 +80,8 @@
             .search()
             .then(updateSearchResults);
         },
-	addClinicNameFilter: function(facet, value) {
-	    $scope.selectFacet(facet, value);
+	addClinicNameFilter: function(value) {
+	    $scope.selectFacet('clinicName', value);
 	    $scope.model.clinicNameFilter = '';
 	},
         getSuggestions: function(val) {
