@@ -75,19 +75,16 @@ angular.module('sample.create')
 
   angular.module('sample.create')
     .controller('CreateCtrl', ['$scope', 'MLRest', '$window', 'User', function ($scope, mlRest, win, user) {
-      var paymentScheduleFile = '<empty>';
-
-
       var model = {
 	  study: {
-	      name: '',
+	      studyName: '',
 	      protocol: '',
-	      sponsor: {},
 	      clinics: [],
 	      paymentSchedules: []
 	  },
 	  newClinic: {
-	      name: '', 
+	      clinicName: '',
+	      clinicNumber: 0,
 	      addr1: '',
 	      addr2: '',
 	      city: '',
@@ -100,9 +97,10 @@ angular.module('sample.create')
         user: user
       };
 
+      var nextClinicNumber = 1;
+
       angular.extend($scope, {
         model: model,
-	paymentScheduleFile: paymentScheduleFile,
         editorOptions: {
           height: '100px',
           toolbarGroups: [
@@ -129,19 +127,14 @@ angular.module('sample.create')
           });
         },
         addClinic: function() {
+	  model.newClinic.clinicNumber = nextClinicNumber++;
           model.study.clinics.push(model.newClinic);
           model.newClinic = '';
         },
-	upload: function() {
-
-	    var fileVariable = "paymentScheduleFile";
-	    var filename = xdmp.getRequestFieldFilename(fileVariable);
-	    var disposition = fn.concat('attachment; filename=", filename, "');
-	    var x = xdmp.addResponseHeader("Content-Disposition", disposition);
-	    var x= xdmp.setResponseContentType( xdmp.getRequestFieldContentType(fileVariable);
-	    xdmp.getRequestField(fileVariable);
-
-	    win.console.log($scope.form-upload.paymentScheduleFile);
+	removeClinic: function(removeClinic) {
+	    model.study.clinics = model.study.clinics.filter(function(clinic) {
+		return clinic.clinicNumber !== removeClinic.clinicNumber;
+	    });
 	}
 
       });
@@ -155,7 +148,7 @@ angular.module('sample.create', []);
   'use strict';
 
   angular.module('sample.detail')
-    .controller('DetailCtrl', ['$scope', 'MLRest', '$routeParams', function ($scope, mlRest, $routeParams) {
+    .controller('DetailCtrl', ['$scope', 'MLRest', '$routeParams', '$window', function ($scope, mlRest, $routeParams, win) {
       var uri = $routeParams.uri;
       var model = {
         // your model stuff here
@@ -164,6 +157,7 @@ angular.module('sample.create', []);
 
       mlRest.getDocument(uri, { format: 'json' }).then(function(response) {
         model.detail = response.data;
+	win.console.log(model.detail)
       });
 
       angular.extend($scope, {
@@ -237,16 +231,37 @@ angular.module('sample.detail', []);
   'use strict';
 
   angular.module('sample.search')
-    .controller('SearchCtrl', ['$scope', 'MLRest', 'User', '$location', function ($scope, mlRest, user, $location) {
+    .controller('SearchCtrl', ['$scope', 'MLRest', 'User', '$location', '$window', function ($scope, mlRest, user, $location, $win) {
+
+      var clinicNameFacet = {facet: "eyeColor", value: "brown"};
+
       var model = {
         selected: [],
         text: '',
         user: user
       };
 
+      // var options = {
+      // 	  queryOptions: {
+      // 	      "constraint": [
+      // 		  {
+      // 		      "name": "clinic-name",
+      // 		      "value": {
+      // 			  "type": "string",
+      // 			  "json-property": "clinicName"
+      // 		      }
+      // 		  }
+      // 	      ]
+      // 	  }
+      // };
+
+      //var searchContext = mlRest.createSearchContext(options);
       var searchContext = mlRest.createSearchContext();
 
       function updateSearchResults(data) {
+	$win.console.log(data);
+	$win.console.log('selected:');
+	$win.console.log(model.selected);
         model.search = data;
       }
 
@@ -259,6 +274,7 @@ angular.module('sample.detail', []);
       angular.extend($scope, {
         model: model,
         selectFacet: function(facet, value) {
+	  $win.console.log('select facet...');  
           var existing = model.selected.filter( function( selectedFacet ) {
             return selectedFacet.facet === facet && selectedFacet.value === value;
           });

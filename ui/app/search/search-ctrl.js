@@ -3,26 +3,36 @@
 
   angular.module('sample.search')
     .controller('SearchCtrl', ['$scope', 'MLRest', 'User', '$location', '$window', function ($scope, mlRest, user, $location, $win) {
+
+      var clinicNameFacet = {facet: "eyeColor", value: "brown"};
+
       var model = {
         selected: [],
         text: '',
         user: user
       };
 
-      var clinicNameFacet = {
-          constraints: {
-              name: {
-                  queryStringName: 'name',
-                  constraintName: 'name',
-                  type: 'text'
-              }
-          }
-      };
+      // var options = {
+      // 	  queryOptions: {
+      // 	      "constraint": [
+      // 		  {
+      // 		      "name": "clinic-name",
+      // 		      "value": {
+      // 			  "type": "string",
+      // 			  "json-property": "clinicName"
+      // 		      }
+      // 		  }
+      // 	      ]
+      // 	  }
+      // };
 
+      //var searchContext = mlRest.createSearchContext(options);
       var searchContext = mlRest.createSearchContext();
 
       function updateSearchResults(data) {
 	$win.console.log(data);
+	$win.console.log('selected:');
+	$win.console.log(model.selected);
         model.search = data;
       }
 
@@ -35,11 +45,8 @@
       angular.extend($scope, {
         model: model,
         selectFacet: function(facet, value) {
+	  $win.console.log('select facet...');  
           var existing = model.selected.filter( function( selectedFacet ) {
-	    $win.console.log(selectedFacet.facet);
-	    $win.console.log(facet);
-	    $win.console.log(selectedFacet.value);
-	    $win.console.log(value);
             return selectedFacet.facet === facet && selectedFacet.value === value;
           });
           if ( existing.length === 0 ) {
