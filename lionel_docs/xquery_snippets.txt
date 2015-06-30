@@ -1,4 +1,4 @@
-(: search by clinic name :)
+(: ****** search by clinic name ****** :)
 xquery version "1.0-ml";
 import module namespace search = "http://marklogic.com/appservices/search" at "/MarkLogic/appservices/search/search.xqy";
 
@@ -16,3 +16,6 @@ let $options := <options xmlns="http://marklogic.com/appservices/search">
 </options>
 
 return search:search("clinic1", $options)
+
+(: ****** delete a document ****** :)
+(: xdmp:document-delete("/content/15710233907263469643.json") :)
