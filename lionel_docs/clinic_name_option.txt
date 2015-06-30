@@ -1,0 +1,15 @@
+{
+    options: {
+	"constraint": [
+            {
+		"name": "clinic-name",
+		"value": {
+                    "type": "string",
+                    "json-property": "clinicName"
+		}
+            }
+	]
+    }
+}
+
+

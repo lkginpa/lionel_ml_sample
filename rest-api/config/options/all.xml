@@ -78,6 +78,12 @@
     </search:range>
   </search:constraint>
 
+  <search:constraint name="clinic-name">
+    <search:value>
+      <search:element ns="http://marklogic.com/xdmp/json/basic" name="clinicName"/>
+    </search:value>
+  </search:constraint>
+
   <!-- example facet constraint below -->
   <!--
   <search:constraint name="myconstraint">

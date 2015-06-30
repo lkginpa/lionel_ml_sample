@@ -1,0 +1,18 @@
+(: search by clinic name :)
+xquery version "1.0-ml";
+import module namespace search = "http://marklogic.com/appservices/search" at "/MarkLogic/appservices/search/search.xqy";
+
+let $options := <options xmlns="http://marklogic.com/appservices/search">
+  <constraint name="clinicName">
+    <range type="xs:string" collation="http://marklogic.com/collation/codepoint" facet="true">
+      <facet-option>limit=10</facet-option>
+      <element ns="http://marklogic.com/xdmp/json/basic" name="clinicName"/>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+    </range>
+  </constraint>
+  <return-results>true</return-results>
+  <return-facets>true</return-facets>
+</options>
+
+return search:search("clinic1", $options)

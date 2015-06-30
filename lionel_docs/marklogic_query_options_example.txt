@@ -1,0 +1,9 @@
+# successfully installed value constraint with the following command
+curl --anyauth --user lgamache:ransom67 -H "Content-type: application/json" -T './clinic_name_option.txt' 'http://localhost:8040/LATEST/config/query/clinic-name-only'
+
+# successful query using installed query options
+curl --anyauth --user lgamache:ransom67 -H "Accept: application/json" -T './clinic_name_option.txt' -X GET 'http://localhost:8040/LATEST/search?q=clinic-name:newclinic1&options=clinic-name-only' 
+
+# range index query
+curl --anyauth --user lgamache:ransom67 -H "Accept: application/json" -T './clinic_name_option.txt' -X \
+GET 'http://localhost:8040/LATEST/search?q=newclinic1&options=clinicName
